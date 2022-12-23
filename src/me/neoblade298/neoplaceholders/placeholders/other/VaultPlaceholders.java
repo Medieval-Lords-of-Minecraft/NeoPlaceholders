@@ -64,12 +64,10 @@ public class VaultPlaceholders extends PlaceholderExpansion {
 		DecimalFormat df1M = new DecimalFormat("0.00M");
 		
 		String args[] = identifier.split("_");
-		if (!SkillAPI.isLoaded(p)) return "Loading...";
 		
 		if (args[0].equalsIgnoreCase("money")) {
 			String placeholder = "Loading...";
 			double money = econ.getBalance(p);
-			// Check if cursed
 			
 			if (money >= 1000000) {
 				placeholder = df1M.format(money / 1000000);
