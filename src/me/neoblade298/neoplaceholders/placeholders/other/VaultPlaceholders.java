@@ -6,7 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
-import com.sucy.skill.SkillAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.neoblade298.neoplaceholders.NeoPlaceholders;
 import net.milkbowl.vault.economy.Economy;
