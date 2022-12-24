@@ -50,6 +50,7 @@ public class NeoCoreFieldPlaceholders extends PlaceholderExpansion {
 	@Override
 	public String onPlaceholderRequest(Player p, String identifier) {
 		if (p == null) return "Loading...";
+		if (NeoCore.isLoading(p)) return "Loading...";
 		
 		String args[] = identifier.split("_");
 		String key = args[0];
