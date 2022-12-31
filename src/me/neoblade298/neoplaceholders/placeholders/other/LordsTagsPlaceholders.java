@@ -32,7 +32,7 @@ public class LordsTagsPlaceholders extends PlaceholderExpansion {
 
 	@Override
 	public String getIdentifier() {
-		return "lordstags";
+		return "lordtags";
 	}
 
     @Override
@@ -53,7 +53,7 @@ public class LordsTagsPlaceholders extends PlaceholderExpansion {
 		String args[] = identifier.split("_");
 		
 		if (args[0].equalsIgnoreCase("activetag")) {
-			return TagManager.getPlayers().get(p.getUniqueId()).getCurrentTag();
+			return TagManager.getTags().get(TagManager.getPlayers().get(p.getUniqueId()).getCurrentTag()).getTagDisplay();
 		}
 		return "";
 	}
