@@ -2,6 +2,7 @@ package me.neoblade298.neoplaceholders.placeholders.other;
 
 import org.bukkit.entity.Player;
 
+import me.ShanaChans.LordTags.TagManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.neoblade298.neocore.NeoCore;
 
@@ -52,7 +53,7 @@ public class LordsTagsPlaceholders extends PlaceholderExpansion {
 		String args[] = identifier.split("_");
 		
 		if (args[0].equalsIgnoreCase("activetag")) {
-			return "#FC6FEFTest123";
+			return TagManager.getPlayers().get(p.getUniqueId()).getCurrentTag();
 		}
 		return "";
 	}
