@@ -1,17 +1,17 @@
 package me.neoblade298.neoplaceholders.placeholders.other;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import me.ShanaChans.LordTags.TagManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.neoblade298.neocore.NeoCore;
 
-public class LordsTagsPlaceholders extends PlaceholderExpansion {
+public class LordTagsPlaceholders extends PlaceholderExpansion {
 
     @Override
     public boolean canRegister(){
-        // return Bukkit.getPluginManager().getPlugin("SkillAPI") != null;
-        return true; // Replace with above line with your plugin
+        return Bukkit.getPluginManager().getPlugin("LordTags") != null;
     }
     
     @Override
@@ -37,7 +37,7 @@ public class LordsTagsPlaceholders extends PlaceholderExpansion {
 
     @Override
     public String getRequiredPlugin(){
-        return null; // Replace with your plugin name
+        return "LordTags";
     }
     
 	@Override
@@ -52,8 +52,14 @@ public class LordsTagsPlaceholders extends PlaceholderExpansion {
 		
 		String args[] = identifier.split("_");
 		
-		if (args[0].equalsIgnoreCase("activetag")) {
-			return TagManager.getTags().get(TagManager.getPlayers().get(p.getUniqueId()).getCurrentTag()).getTagDisplay();
+		if (args[0].equalsIgnoreCase("display")) {
+			return TagManager.getPlayerTag(p).getDisplay();
+		}
+		else if (args[0].equalsIgnoreCase("desc")) {
+			return TagManager.getPlayerTag(p).getDesc();
+		}
+		else if (args[0].equalsIgnoreCase("id")) {
+			return TagManager.getPlayerTag(p).getId();
 		}
 		return "";
 	}

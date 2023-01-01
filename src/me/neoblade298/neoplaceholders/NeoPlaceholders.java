@@ -13,7 +13,7 @@ import me.neoblade298.neoplaceholders.placeholders.mythicmobs.MythicmobsPlacehol
 import me.neoblade298.neoplaceholders.placeholders.other.ChatColorPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.other.EtcPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.other.LordboardPlaceholders;
-import me.neoblade298.neoplaceholders.placeholders.other.LordsTagsPlaceholders;
+import me.neoblade298.neoplaceholders.placeholders.other.LordTagsPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.other.SkillAPIPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.other.VaultPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.research.ResearchKillsBossPlaceholders;
@@ -53,7 +53,7 @@ public class NeoPlaceholders extends JavaPlugin {
 		new LordboardPlaceholders().register();
 		new QuestTagPlaceholders().register();
 		new FoPzlVotePlaceholders().register();
-		new LordsTagsPlaceholders().register();
+		new LordTagsPlaceholders().register();
 	}
 
 	public void onDisable() {
