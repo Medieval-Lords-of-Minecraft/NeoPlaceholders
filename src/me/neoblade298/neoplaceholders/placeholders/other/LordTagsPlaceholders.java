@@ -3,6 +3,7 @@ package me.neoblade298.neoplaceholders.placeholders.other;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import me.ShanaChans.LordTags.Tag;
 import me.ShanaChans.LordTags.TagManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.neoblade298.neocore.NeoCore;
@@ -49,17 +50,19 @@ public class LordTagsPlaceholders extends PlaceholderExpansion {
 	public String onPlaceholderRequest(Player p, String identifier) {
 		if (p == null) return "Loading...";
 		if (!NeoCore.isLoaded(p)) return "Loading...";
+		Tag tag = TagManager.getPlayerTag(p);
+		if (tag == null) return "";
 		
 		String args[] = identifier.split("_");
 		
 		if (args[0].equalsIgnoreCase("display")) {
-			return TagManager.getPlayerTag(p).getDisplay();
+			return tag.getDisplay();
 		}
 		else if (args[0].equalsIgnoreCase("desc")) {
-			return TagManager.getPlayerTag(p).getDesc();
+			return tag.getDesc();
 		}
 		else if (args[0].equalsIgnoreCase("id")) {
-			return TagManager.getPlayerTag(p).getId();
+			return tag.getId();
 		}
 		return "";
 	}
