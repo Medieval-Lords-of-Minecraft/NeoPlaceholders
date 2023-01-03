@@ -48,15 +48,15 @@ public class LordTagsPlaceholders extends PlaceholderExpansion {
 	
 	@Override
 	public String onPlaceholderRequest(Player p, String identifier) {
-		if (p == null) return "Loading...";
-		if (!NeoCore.isLoaded(p)) return "Loading...";
+		if (p == null) return "";
+		if (!NeoCore.isLoaded(p)) return "";
 		Tag tag = TagManager.getPlayerTag(p);
 		if (tag == null) return "";
 		
 		String args[] = identifier.split("_");
 		
 		if (args[0].equalsIgnoreCase("display")) {
-			return tag.getDisplay();
+			return tag.getDisplay() + " ";
 		}
 		else if (args[0].equalsIgnoreCase("desc")) {
 			return tag.getDesc();
