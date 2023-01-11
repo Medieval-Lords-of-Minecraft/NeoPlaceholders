@@ -11,7 +11,6 @@ import me.neoblade298.neoplaceholders.placeholders.mythicmobs.MinibossPlaceholde
 import me.neoblade298.neoplaceholders.placeholders.mythicmobs.MinibossShortPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.mythicmobs.MythicmobsPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.other.ChatColorPlaceholders;
-import me.neoblade298.neoplaceholders.placeholders.other.EtcPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.other.LordboardPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.other.LordTagsPlaceholders;
 import me.neoblade298.neoplaceholders.placeholders.other.SkillAPIPlaceholders;
@@ -36,7 +35,6 @@ public class NeoPlaceholders extends JavaPlugin {
 		new NeoCoreTagPlaceholders().register();
 		new NeoRelicsPlaceholders().register();
 		new VaultPlaceholders(this).register();
-		new EtcPlaceholders(this).registerPlaceholders();
 		new NeoProfessionsPlaceholders().register();
 		new NeoBossInstancesPlaceholders().register();
 		new ResearchPlaceholders().register();
