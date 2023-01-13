@@ -13,6 +13,9 @@ import net.milkbowl.vault.economy.Economy;
 public class VaultPlaceholders extends PlaceholderExpansion {
 	NeoPlaceholders main;
 	Economy econ;
+	DecimalFormat df = new DecimalFormat("0");
+	DecimalFormat df1k = new DecimalFormat("0.00k");
+	DecimalFormat df1M = new DecimalFormat("0.00M");
 	public VaultPlaceholders(NeoPlaceholders main) {
 		this.main = main;
 	}
@@ -57,27 +60,29 @@ public class VaultPlaceholders extends PlaceholderExpansion {
 	
 	@Override
 	public String onPlaceholderRequest(Player p, String identifier) {
-		if (p == null) return "Loading...";
-		DecimalFormat df = new DecimalFormat("0");
-		DecimalFormat df1k = new DecimalFormat("0.00k");
-		DecimalFormat df1M = new DecimalFormat("0.00M");
-		
-		String args[] = identifier.split("_");
-		
-		if (args[0].equalsIgnoreCase("money")) {
-			String placeholder = "Loading...";
-			double money = econ.getBalance(p);
+		try {
+			if (p == null) return "Loading...";
 			
-			if (money >= 1000000) {
-				placeholder = df1M.format(money / 1000000);
+			String args[] = identifier.split("_");
+			
+			if (args[0].equalsIgnoreCase("money")) {
+				String placeholder = "Loading...";
+				double money = econ.getBalance(p);
+				
+				if (money >= 1000000) {
+					placeholder = df1M.format(money / 1000000);
+				}
+				else if (money >= 1000) {
+					placeholder = df1k.format(money / 1000);
+				}
+				else {
+					placeholder = df.format(money);
+				}
+				return placeholder;
 			}
-			else if (money >= 1000) {
-				placeholder = df1k.format(money / 1000);
-			}
-			else {
-				placeholder = df.format(money);
-			}
-			return placeholder;
+		 	return "Invalid placeholder";
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	 	return "Invalid placeholder";
 	}
