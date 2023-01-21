@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import me.ShanaChans.LordTags.Tag;
 import me.ShanaChans.LordTags.TagManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import me.neoblade298.neocore.NeoCore;
+import me.neoblade298.neocore.bukkit.NeoCore;
 
 public class LordTagsPlaceholders extends PlaceholderExpansion {
 

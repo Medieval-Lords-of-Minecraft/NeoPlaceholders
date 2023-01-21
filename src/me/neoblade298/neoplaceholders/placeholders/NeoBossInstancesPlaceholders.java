@@ -16,8 +16,8 @@ import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.neoblade298.neobossinstances.Boss;
 import me.neoblade298.neobossinstances.BossInstances;
 import me.neoblade298.neobossinstances.BossType;
-import me.neoblade298.neocore.info.BossInfo;
-import me.neoblade298.neocore.info.InfoAPI;
+import me.neoblade298.neocore.bukkit.info.BossInfo;
+import me.neoblade298.neocore.bukkit.info.InfoAPI;
 
 public class NeoBossInstancesPlaceholders extends PlaceholderExpansion {
 	private BossInstances plugin;

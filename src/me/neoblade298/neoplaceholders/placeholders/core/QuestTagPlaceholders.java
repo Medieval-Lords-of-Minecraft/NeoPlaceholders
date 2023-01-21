@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
 import com.sucy.skill.SkillAPI;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import me.neoblade298.neocore.NeoCore;
+import me.neoblade298.neocore.bukkit.NeoCore;
 
 public class QuestTagPlaceholders extends PlaceholderExpansion {
 

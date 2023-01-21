@@ -7,9 +7,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import me.neoblade298.neocore.NeoCore;
-import me.neoblade298.neocore.info.BossInfo;
-import me.neoblade298.neocore.info.InfoAPI;
+import me.neoblade298.neocore.bukkit.NeoCore;
+import me.neoblade298.neocore.bukkit.info.BossInfo;
+import me.neoblade298.neocore.bukkit.info.InfoAPI;
 
 public class BossMultipliersPlaceholders extends PlaceholderExpansion {
 	private static DecimalFormat df = new DecimalFormat("##.##");
