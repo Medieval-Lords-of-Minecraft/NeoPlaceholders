@@ -3,7 +3,9 @@ package me.neoblade298.neoplaceholders.placeholders;
 import org.bukkit.entity.Player;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import me.fopzl.vote.Vote;
+import me.fopzl.vote.bukkit.io.BukkitVoteIO;
+import me.fopzl.vote.bukkit.io.VoteStats;
+import me.neoblade298.neocore.bukkit.NeoCore;
 
 public class FoPzlVotePlaceholders extends PlaceholderExpansion {
 	@Override
@@ -44,18 +46,18 @@ public class FoPzlVotePlaceholders extends PlaceholderExpansion {
 	@Override
 	public String onPlaceholderRequest(Player p, String identifier) {
 		if(p == null) return "Loading...";
+		if (!NeoCore.isLoaded(p)) return "Loading...";
 		
 		String args[] = identifier.split("_");
 		// fopzlvote_all, fopzlvote_month, and fopzlvote_streak
+		VoteStats stats = BukkitVoteIO.getStats(p);
 		switch (args[0]) {
 		case "all":
-			return Vote.getInstance().getVoteInfo().getStats(p).getTotalVotes() + "";
+			return stats.getTotalVotes() + "";
 		case "month":
-			return Vote.getInstance().getVoteInfo().getStats(p).getVotesThisMonth() + "";
+			return stats.getVotesThisMonth() + "";
 		case "streak":
-			return Vote.getInstance().getVoteInfo().getStats(p).getStreak() + "";
-		case "cooldown":
-			return Vote.getInstance().getCooldown(p, args[1]).replace('&', '§');
+			return stats.getStreak() + "";
 		}
 		
     	return "§cInvalid placeholder!";
