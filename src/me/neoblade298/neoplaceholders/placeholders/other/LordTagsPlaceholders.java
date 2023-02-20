@@ -55,6 +55,19 @@ public class LordTagsPlaceholders extends PlaceholderExpansion {
 		
 		String args[] = identifier.split("_");
 		
+		switch (args[0]) {
+		case "display":
+			return tag.getDisplay();
+		case "desc":
+			return tag.getDisplay();
+		case "id":
+			return tag.getId();
+		case "nick":
+			String nick = TagManager.getPlayerNick(p) != null ? TagManager.getPlayerNick(p) : p.getName();
+			return TagManager.getNameGradient(p) != null ? TagManager.getNameGradient(p).apply(nick) : nick;
+		case "gradient":
+			return TagManager.getNameGradient(p).getId();
+		}
 		if (args[0].equalsIgnoreCase("display")) {
 			return tag.getDisplay() + " ";
 		}
