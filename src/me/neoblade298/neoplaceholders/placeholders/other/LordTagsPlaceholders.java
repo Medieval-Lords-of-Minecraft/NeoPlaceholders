@@ -62,21 +62,9 @@ public class LordTagsPlaceholders extends PlaceholderExpansion {
 			return tag.getDisplay();
 		case "id":
 			return tag.getId();
-		case "nick":
-			String nick = TagManager.getPlayerNick(p) != null ? TagManager.getPlayerNick(p) : p.getName();
-			return TagManager.getNameGradient(p) != null ? TagManager.getNameGradient(p).apply(nick) : nick;
-		case "gradient":
-			return TagManager.getNameGradient(p).getId();
+		case "name":
+			return TagManager.getPlayerDisplay(p);
 		}
-		if (args[0].equalsIgnoreCase("display")) {
-			return tag.getDisplay() + " ";
-		}
-		else if (args[0].equalsIgnoreCase("desc")) {
-			return tag.getDesc();
-		}
-		else if (args[0].equalsIgnoreCase("id")) {
-			return tag.getId();
-		}
-		return "";
+		return "Invalid placeholder!";
 	}
 }
