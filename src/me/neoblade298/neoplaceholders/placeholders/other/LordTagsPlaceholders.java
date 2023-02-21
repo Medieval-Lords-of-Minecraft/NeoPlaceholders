@@ -4,9 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import me.ShanaChans.LordTags.Tag;
+import me.ShanaChans.LordTags.TagAccount;
 import me.ShanaChans.LordTags.TagManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import me.neoblade298.neocore.bukkit.NeoCore;
 
 public class LordTagsPlaceholders extends PlaceholderExpansion {
 
@@ -46,24 +46,44 @@ public class LordTagsPlaceholders extends PlaceholderExpansion {
 		return "1.0.0";
 	}
 	
+	// lordtags_tag_id/desc/display
+	// lordtags_name
+	// lordtags_nick
+	// lordtags_chatcolor
 	@Override
 	public String onPlaceholderRequest(Player p, String identifier) {
 		if (p == null) return "";
-		if (!NeoCore.isLoaded(p)) return "";
-		Tag tag = TagManager.getPlayerTag(p);
-		if (tag == null) return "";
 		
 		String args[] = identifier.split("_");
 		
+		TagAccount acct = TagManager.getAccount(p.getUniqueId());
+		if (acct == null) {
+			if (args[0].equalsIgnoreCase("name") || args[0].equalsIgnoreCase("nick")) {
+				return p.getName();
+			}
+			else {
+				return "";
+			}
+		}
+		
 		switch (args[0]) {
-		case "display":
-			return tag.getDisplay();
-		case "desc":
-			return tag.getDisplay();
-		case "id":
-			return tag.getId();
 		case "name":
-			return TagManager.getPlayerDisplay(p);
+			return acct.getDisplay(false);
+		case "nick":
+			return acct.getDisplay(true);
+		case "chatcolor":
+			return acct.getChatColor() + "";
+		case "tag":
+			if (acct.getTag() == null) return "";
+			Tag tag = acct.getTag();
+			switch (args[1]) {
+			case "display":
+				return tag.getDisplay() + " ";
+			case "desc":
+				return tag.getDesc();
+			case "id":
+				return tag.getId();
+			}
 		}
 		return "Invalid placeholder!";
 	}
