@@ -71,6 +71,8 @@ public class LordTagsPlaceholders extends PlaceholderExpansion {
 			return acct.getDisplay(false);
 		case "nick":
 			return acct.getDisplay(true);
+		case "nicknocolor":
+			return acct.getNickname() == null ? p.getName() : acct.getNickname();
 		case "chatcolor":
 			return acct.getChatColor() + "";
 		case "tag":
