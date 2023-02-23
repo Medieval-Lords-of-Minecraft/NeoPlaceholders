@@ -10,12 +10,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import com.sucy.skill.SkillAPI;
+import com.sucy.skill.api.player.PlayerAccounts;
 import com.sucy.skill.api.util.FlagManager;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.neoblade298.neobossinstances.Boss;
 import me.neoblade298.neobossinstances.BossInstances;
 import me.neoblade298.neobossinstances.BossType;
+import me.neoblade298.neocore.bukkit.NeoCore;
 import me.neoblade298.neocore.bukkit.info.BossInfo;
 import me.neoblade298.neocore.bukkit.info.InfoAPI;
 
@@ -25,7 +27,8 @@ public class NeoBossInstancesPlaceholders extends PlaceholderExpansion {
 
     @Override
     public boolean canRegister(){
-        return Bukkit.getPluginManager().getPlugin("NeoBossInstances") != null;
+        return Bukkit.getPluginManager().isPluginEnabled("NeoBossInstances") &&
+        		Bukkit.getPluginManager().isPluginEnabled("SkillAPI");
     }
     
     @Override
@@ -62,6 +65,16 @@ public class NeoBossInstancesPlaceholders extends PlaceholderExpansion {
 		return "1.0.0";
 	}
 	
+	private boolean hasFought(Player p, String tag) {
+		PlayerAccounts accs = SkillAPI.getPlayerAccountData(p);
+		if (accs != null) {
+			int id = accs.getActiveId();
+			String key = "questaccount_" + id;
+			return NeoCore.getPlayerTags(key).exists(tag, p.getUniqueId());
+		}
+		return false;
+	}
+	
 	@Override
 	public String onPlaceholderRequest(Player p, String identifier) {
 		if (p == null) return "Loading...";
@@ -75,7 +88,7 @@ public class NeoBossInstancesPlaceholders extends PlaceholderExpansion {
 				BossInfo bi = InfoAPI.getBossInfo(boss);
 				String display;
 				if (bi != null) {
-					if (!bi.hasFought(p)) return "§c???";
+					if (!hasFought(p, bi.getTag())) return "§c???";
 					display = bi.getDisplayWithLevel(false);
 				}
 				else {
