@@ -58,6 +58,6 @@ public class QuestTagPlaceholders extends PlaceholderExpansion {
 		String args[] = identifier.split("_");
 		String subkey = args[0];
 		
-		return "" + NeoCore.getPlayerTags("questaccount_" + acct).exists(subkey, p.getUniqueId());
+		return "" + NeoCore.getPlayerTags("questaccount" + acct).exists(subkey, p.getUniqueId());
 	}
 }

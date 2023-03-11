@@ -69,7 +69,7 @@ public class NeoBossInstancesPlaceholders extends PlaceholderExpansion {
 		PlayerAccounts accs = SkillAPI.getPlayerAccountData(p);
 		if (accs != null) {
 			int id = accs.getActiveId();
-			String key = "questaccount_" + id;
+			String key = "questaccount" + id;
 			return NeoCore.getPlayerTags(key).exists(tag, p.getUniqueId());
 		}
 		return false;
